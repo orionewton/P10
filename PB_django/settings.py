@@ -38,8 +38,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'users.apps.UsersConfig',
-    'main_home.apps.BlogConfig',
-    'crispy_forms',
+    'home.apps.HomeConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -58,7 +57,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'PurBeurre_django.urls'
+ROOT_URLCONF = 'PB_django.urls'
 
 TEMPLATES = [
     {
@@ -78,7 +77,7 @@ TEMPLATES = [
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
-WSGI_APPLICATION = 'PurBeurre_django.wsgi.application'
+WSGI_APPLICATION = 'PB_django.wsgi.application'
 
 
 # Database
@@ -135,5 +134,5 @@ MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'main_home-home'
+LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
