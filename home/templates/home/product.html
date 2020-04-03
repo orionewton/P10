@@ -8,36 +8,36 @@
         <h1>Informations du produit :</h1>
         <div class="section"><span>1</span>Nom :</div>
         <div class="inner-wrap">
-            <h2 class="">{{ aliment.product_name_fr }}</h2>
+            <h2 class="">{{ food.product_name_fr }}</h2>
         </div>
         <div class="section"><span>2</span>Nutriscore :</div>
         <div class="inner-wrap alimentimgnutri">
-            {% if aliment.nutriletter == 'A' %}
+            {% if food.nutriletter == 'A' %}
             <img src="https://static.openfoodfacts.org/images/misc/nutriscore-a.svg">
-            {% elif aliment.nutriletter == 'B' %}
+            {% elif food.nutriletter == 'B' %}
             <img src="https://static.openfoodfacts.org/images/misc/nutriscore-b.svg">
-            {% elif aliment.nutriletter == 'C' %}
+            {% elif food.nutriletter == 'C' %}
             <img src="https://static.openfoodfacts.org/images/misc/nutriscore-c.svg">
-            {% elif aliment.nutriletter == 'D' %}
+            {% elif food.nutriletter == 'D' %}
             <img src="https://static.openfoodfacts.org/images/misc/nutriscore-d.svg">
-            {% elif aliment.nutriletter == 'E' %}
+            {% elif food.nutriletter == 'E' %}
             <img src="https://static.openfoodfacts.org/images/misc/nutriscore-e.svg">
             {% endif %}
         </div>
         <div class="section"><span>3</span>Photos du produit :</div>
         <div class="inner-wrap alimentimgbox">
-            {% if aliment.img == 'default img' and aliment.url_nutri == "default nutriimg" %}
+            {% if food.img == 'default img' and food.url_nutri == "default nutriimg" %}
             <img id="myImg" src="{% static 'img/cakeisalie.png' %}" style="width:100%;max-width:300px"><img
                 id="myImg2" src="{% static 'img/cakeisalie.png' %}" style="width:100%;max-width:300px">
-            {% elif aliment.img == 'default img' and aliment.url_nutri != "default nutriimg" %}
+            {% elif food.img == 'default img' and food.url_nutri != "default nutriimg" %}
             <img id="myImg" src="{% static 'img/cakeisalie.png' %}" style="width:100%;max-width:300px"><img
-                id="myImg2" src="{{aliment.url_nutri}}" style="width:100%;max-width:300px">
-            {% elif aliment.img != 'default img' and aliment.url_nutri == "default nutriimg" %}
-            <img id="myImg" src="{{aliment.img}}" style="width:100%;max-width:300px"><img
+                id="myImg2" src="{{food.url_nutri}}" style="width:100%;max-width:300px">
+            {% elif food.img != 'default img' and food.url_nutri == "default nutriimg" %}
+            <img id="myImg" src="{{food.img}}" style="width:100%;max-width:300px"><img
                 id="myImg2" src="{% static 'img/cakeisalie.png' %}" style="width:100%;max-width:300px">
             {% else %}
-            <img id="myImg" src="{{aliment.img}}" style="width:100%;max-width:300px"><img
-                id="myImg2" src="{{aliment.url_nutri}}" style="width:100%;max-width:300px">
+            <img id="myImg" src="{{food.img}}" style="width:100%;max-width:300px"><img
+                id="myImg2" src="{{food.url_nutri}}" style="width:100%;max-width:300px">
             {% endif %}
         </div>
 
@@ -54,20 +54,20 @@
             <!-- Modal Caption (Image Text) -->
             <div id="caption"></div>
         </div>
-        {% if aliment.stores and aliment.stores != "no stores" %}
+        {% if food.stores and food.stores != "no stores" %}
         <div class="section"><span>4</span>Magasins :</div>
         <div class="inner-wrap">
 
-            <h3 class="">{% for store in aliment.stores%} {{store}}, {% endfor %}</h3>
+            <h3 class="">{% for store in food.stores%} {{store}}, {% endfor %}</h3>
 
         </div>
         {% endif %}
-        <div class="section"><span>{% if aliment.stores %}5{% else %}4{% endif %}</span>Fiche
+        <div class="section"><span>{% if food.stores %}5{% else %}4{% endif %}</span>Fiche
             du produit sur openfoodfacts :
         </div>
         <div class="inner-wrap text-center alimentcardbuttonbox">
             <div class="button-section mt-1"
-                 onclick="window.location.href = '{{ aliment.url }}';">
+                 onclick="window.location.href = '{{ food.url }}';">
                 <input type="button" value="Voir la fiche"/>
             </div>
             <div class="button-section mt-1"

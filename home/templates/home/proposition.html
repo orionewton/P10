@@ -24,7 +24,7 @@
                        class="nutri {{ food.nutriscore }}">{{food.nutriletter}}</a>
                     <h1 class="foodname" slot="header">{{ food.product_name_fr }}</h1>
                     <button class="btn savebtn savebtn2" type="submit" formaction=
-                            "{% url 'home-aliment' %}"
+                            "{% url 'home-product' %}"
                             value="{{ food }}"
                             slot="save" name="info"><i class="fas fa-info-circle"></i></button>
                     <button class="btn savebtn savebtn2" type="submit" formaction=

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import sentry_sdk
+# import dj_database_url
 from sentry_sdk.integrations.django import DjangoIntegration
 
 sentry_sdk.init(
@@ -89,6 +90,8 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+# DATABASE_URL = os.environ['DATABASE_URL']
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
