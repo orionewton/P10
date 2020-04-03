@@ -1,1 +1,1 @@
-web: gunicorn PurBeurre_django.wsgi
+web: gunicorn PB_django.wsgi
