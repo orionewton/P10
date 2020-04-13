@@ -32,7 +32,7 @@ SECRET_KEY = '^u+ji#i3ty79@ncf=--)o^(*ip+!oltt@!xxy2j_mdob9z-&n@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['loan-purbeurre.herokuapp.com']
+ALLOWED_HOSTS = ['loan-purbeurre.herokuapp.com','127.0.0.1:5000']
 
 
 # Application definition
@@ -94,9 +94,9 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
-DATABASES['default']['NAME'] = 'DB'
+#DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+#DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+#DATABASES['default']['NAME'] = 'DB'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
