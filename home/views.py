@@ -155,7 +155,7 @@ def delete(request):
             value = {}
             value['delete'] = request.POST.get('delete', None)
             context = {
-                'aliment': value['delete']
+                'product': value['delete']
             }
             return render(request, 'home/delete.html', context, {'title': 'Suppression'})
             

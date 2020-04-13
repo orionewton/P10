@@ -7,7 +7,7 @@ import ast
 
 class Api:
     def get_results_from_search(self, query):
-        """ return aliments for a basic query """
+        """ return products for a basic query """
         data = self.api_call_results_search(query)
         if data['products']:
             Product.propositionslst = self.clean_datanewtest(data)
@@ -16,13 +16,13 @@ class Api:
             return []
 
     def get_results_from_category(self, categorie, nutriscore):
-        """return best aliments with the best category """
+        """return best products with the best category """
         data = self.api_call_results_category(categorie, nutriscore)
         Product.substituteslst = self.clean_data_category(data)
         return Product.substituteslst
 
     def get_results_from_category_nova(self, categorie, novascore):
-        """return best aliments with the best category """
+        """return best products with the best category """
         data = self.api_call_results_category_nova(categorie, novascore)
         Product.substituteslst = self.clean_data_category(data)
         return Product.substituteslst
@@ -158,66 +158,66 @@ class Api:
                     finalcategory = category
         return finalcategory
         
-    def get_aliment_dict(self, data, aliment, i):
-        """return cleaned aliment"""
+    def get_product_dict(self, data, product, i):
+        """return cleaned product"""
         if 'product_name_it' in data['products'][i]:
             if data['products'][i]['product_name_it'] is not '':
-                aliment['product_name_fr'] = data['products'][i]['product_name_it']
+                product['product_name_fr'] = data['products'][i]['product_name_it']
         if 'product_name_en' in data['products'][i]:
             if data['products'][i]['product_name_en'] is not '':
-                aliment['product_name_fr'] = data['products'][i]['product_name_en']
+                product['product_name_fr'] = data['products'][i]['product_name_en']
         if 'product_name' in data['products'][i]:
             if data['products'][i]['product_name'] is not '':
-                aliment['product_name_fr'] = data['products'][i]['product_name']
+                product['product_name_fr'] = data['products'][i]['product_name']
         if 'product_name_fr' in data['products'][i]:
             if data['products'][i]['product_name_fr'] is not '':
-                aliment['product_name_fr'] = data['products'][i]['product_name_fr']
+                product['product_name_fr'] = data['products'][i]['product_name_fr']
         if 'image_url' in data['products'][i]:
-            aliment['img'] = data['products'][i]['image_url']
+            product['img'] = data['products'][i]['image_url']
         if 'image_nutrition_url' in data['products'][i]:
-            aliment['url_nutri'] = data['products'][i]['image_nutrition_url']
+            product['url_nutri'] = data['products'][i]['image_nutrition_url']
         if 'nutrition_grades' in data['products'][i]:
-            aliment['nutriletter'] = data['products'][i]['nutrition_grades'].upper()
+            product['nutriletter'] = data['products'][i]['nutrition_grades'].upper()
         if 'nova_groups' in data['products'][i]:
-            aliment['nova_groups'] = data['products'][i]['nova_groups']
+            product['nova_groups'] = data['products'][i]['nova_groups']
         if 'id' in data['products'][i]:
-            aliment['code'] = data['products'][i]['id']
+            product['code'] = data['products'][i]['id']
         if 'categories_tags' in data['products'][i]:
-            aliment['categorie'] = data['products'][i]['categories_tags']
+            product['categorie'] = data['products'][i]['categories_tags']
         if 'stores_tags' in data['products'][i]:
-            aliment['stores'] = data['products'][i]['stores_tags']
-        aliment['nutriscore'] += aliment['nutriletter'].lower()
-        aliment['novascore'] += str(aliment['nova_groups'])
-        aliment['url'] = "https://fr.openfoodfacts.org/produit/" + aliment['code']
-        aliment['info'].append(aliment['categorie'])
-        aliment['info'].append(aliment['nutriletter'])
-        return aliment
+            product['stores'] = data['products'][i]['stores_tags']
+        product['nutriscore'] += product['nutriletter'].lower()
+        product['novascore'] += str(product['nova_groups'])
+        product['url'] = "https://fr.openfoodfacts.org/produit/" + product['code']
+        product['info'].append(product['categorie'])
+        product['info'].append(product['nutriletter'])
+        return product
 
-    def get_aliment_dict_hard(self, data, aliment, i):
-        """return only full documented aliments"""
+    def get_product_dict_hard(self, data, product, i):
+        """return only full documented products"""
         if all(name in data['products'][i].keys() for name in ('product_name_fr', 'image_url',
                                                                'image_nutrition_url',
                                                                'nutrition_grades', 'id',
                                                                'categories_tags', 'stores_tags',
                                                                'nova_groups')):
-            aliment['product_name_fr'] = data['products'][i]['product_name_fr']
-            aliment['img'] = data['products'][i]['image_url']
-            aliment['url_nutri'] = data['products'][i]['image_nutrition_url']
-            aliment['nutriletter'] = data['products'][i]['nutrition_grades'].upper()
-            aliment['nova_groups'] = data['products'][i]['nova_groups']
-            aliment['code'] = data['products'][i]['id']
-            aliment['categorie'] = data['products'][i]['categories_tags']
+            product['product_name_fr'] = data['products'][i]['product_name_fr']
+            product['img'] = data['products'][i]['image_url']
+            product['url_nutri'] = data['products'][i]['image_nutrition_url']
+            product['nutriletter'] = data['products'][i]['nutrition_grades'].upper()
+            product['nova_groups'] = data['products'][i]['nova_groups']
+            product['code'] = data['products'][i]['id']
+            product['categorie'] = data['products'][i]['categories_tags']
             if data['products'][i]['stores_tags'] != '':
-                aliment['stores'] = data['products'][i]['stores_tags']
-            aliment['nutriscore'] += aliment['nutriletter'].lower()
-            aliment['novascore'] += str(aliment['nova_groups'])
-            aliment['url'] = "https://fr.openfoodfacts.org/produit/" + aliment['code']
-            aliment['info'].append(aliment['categorie'])
-            aliment['info'].append(aliment['nutriletter'])
-            return aliment
+                product['stores'] = data['products'][i]['stores_tags']
+            product['nutriscore'] += product['nutriletter'].lower()
+            product['novascore'] += str(product['nova_groups'])
+            product['url'] = "https://fr.openfoodfacts.org/produit/" + product['code']
+            product['info'].append(product['categorie'])
+            product['info'].append(product['nutriletter'])
+            return product
 
     def clean_datanewtest(self, data):
-        """return the best aliments by checking completness and already entred aliments"""
+        """return the best products by checking completness and already entred products"""
         newdata = []
         i = 0
         fulltry = True
@@ -230,7 +230,7 @@ class Api:
             maxresult = 20
 
         while len(newdata) <= 5 and finaltry is not False:
-            aliment = {'product_name_fr': 'default name',
+            product = {'product_name_fr': 'default name',
                        'img'            : 'default img', 'nutriscore': 'nutri', 'nutriletter': '?',
                        'code'           : '0', 'url_nutri': 'default nutriimg',
                        'categorie'      : 'en:cocoa-and-hazelnuts-spreads', 'info': [], 'stores'
@@ -251,20 +251,20 @@ class Api:
 
             if not newdata:
                 if fulltry:
-                    result = a.get_aliment_dict_hard(data, aliment, i)
+                    result = a.get_product_dict_hard(data, product, i)
                     if result is not None:
                         newdata.append(result)
                     i += 1
                 elif nametry:
                     if 'product_name_fr' in data['products'][i]:
-                        result = a.get_aliment_dict_hard(data, aliment, i)
+                        result = a.get_product_dict_hard(data, product, i)
                         if result is not None:
                             newdata.append(result)
                     i += 1
                 elif finaltry:
                     if 'product_name_it' in data['products'][i] or 'product_name_en' in data[
                         'products'][i] or 'product_name' in data['products'][i]:
-                        newdata.append(a.get_aliment_dict(data, aliment, i))
+                        newdata.append(a.get_product_dict(data, product, i))
                     i += 1
             else:
                 if fulltry:
@@ -273,28 +273,28 @@ class Api:
                             if not any(
                                     d['product_name_fr'] == data['products'][i]['product_name_fr']
                                     for d in newdata):
-                                result = a.get_aliment_dict_hard(data, aliment, i)
+                                result = a.get_product_dict_hard(data, product, i)
                                 if result is not None:
                                     newdata.append(result)
                     i += 1
                 elif nametry:
                     if 'product_name_fr' in data['products'][i]:
                         if data['products'][i]['product_name_fr'] is not '':
-                            result = a.get_aliment_dict_hard(data, aliment, i)
+                            result = a.get_product_dict_hard(data, product, i)
                             if result is not None:
                                 newdata.append(result)
                     i += 1
                 elif finaltry:
                     if 'product_name_it' in data['products'][i] or 'product_name_en' in data[
                         'products'][i] or 'product_name' in data['products'][i]:
-                        result = a.get_aliment_dict(data, aliment, i)
+                        result = a.get_product_dict(data, product, i)
                         if result is not None:
                             newdata.append(result)
                     i += 1
         return newdata
 
     def clean_data_category(self, data):
-        """return a cleaned aliment"""
+        """return a cleaned product"""
         newdata = []
         i = 0
         if len(data['products']) < 6:
@@ -302,12 +302,12 @@ class Api:
         else:
             maxresult = 5
         while len(newdata) <= maxresult - 1:
-            aliment = {'product_name_fr': 'default name',
+            product = {'product_name_fr': 'default name',
                        'img'            : 'default img', 'nutriscore': 'nutri', 'nutriletter': '?',
                        'code'           : '0', 'url_nutri': 'default nutriimg',
                        'categorie'      : 'en:cocoa-and-hazelnuts-spreads', 'info': [], 'stores'
                                         : 'no stores', 'nova_groups': 'nova', 'novascore': 'nova'}
-            newdata.append(a.get_aliment_dict(data, aliment, i))
+            newdata.append(a.get_product_dict(data, product, i))
             i += 1
         return newdata
 
