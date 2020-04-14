@@ -5,11 +5,13 @@ from django.contrib.auth.models import User
 class Food(models.Model):
     name = models.CharField(max_length=100)
     url = models.URLField()
-    img = models.TextField()
+    url_img = models.TextField()
+    url_nutri = models.TextField()
     category = models.TextField()
     stores = models.TextField()
     nutriscore = models.CharField(max_length=1)
     novascore = models.CharField(max_length=1)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default='1')
 
     def __str__(self):
         return self.name

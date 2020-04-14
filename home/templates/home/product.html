@@ -8,36 +8,36 @@
         <h1>Informations du produit :</h1>
         <div class="section"><span>1</span>Nom :</div>
         <div class="inner-wrap">
-            <h2 class="">{{ food.product_name_fr }}</h2>
+            <h2 class="">{{ product.product_name_fr }}</h2>
         </div>
         <div class="section"><span>2</span>Nutriscore :</div>
         <div class="inner-wrap alimentimgnutri">
-            {% if food.nutriletter == 'A' %}
-            <img src="https://static.openfoodfacts.org/images/misc/nutriscore-a.svg">
-            {% elif food.nutriletter == 'B' %}
-            <img src="https://static.openfoodfacts.org/images/misc/nutriscore-b.svg">
-            {% elif food.nutriletter == 'C' %}
-            <img src="https://static.openfoodfacts.org/images/misc/nutriscore-c.svg">
-            {% elif food.nutriletter == 'D' %}
-            <img src="https://static.openfoodfacts.org/images/misc/nutriscore-d.svg">
-            {% elif food.nutriletter == 'E' %}
-            <img src="https://static.openfoodfacts.org/images/misc/nutriscore-e.svg">
+            {% if product.nutriletter == 'A' %}
+            <img src="https://static.openproductfacts.org/images/misc/nutriscore-a.svg">
+            {% elif product.nutriletter == 'B' %}
+            <img src="https://static.openproductfacts.org/images/misc/nutriscore-b.svg">
+            {% elif product.nutriletter == 'C' %}
+            <img src="https://static.openproductfacts.org/images/misc/nutriscore-c.svg">
+            {% elif product.nutriletter == 'D' %}
+            <img src="https://static.openproductfacts.org/images/misc/nutriscore-d.svg">
+            {% elif product.nutriletter == 'E' %}
+            <img src="https://static.openproductfacts.org/images/misc/nutriscore-e.svg">
             {% endif %}
         </div>
         <div class="section"><span>3</span>Photos du produit :</div>
         <div class="inner-wrap alimentimgbox">
-            {% if food.img == 'default img' and food.url_nutri == "default nutriimg" %}
+            {% if product.img == 'default img' and product.url_nutri == "default nutriimg" %}
             <img id="myImg" src="{% static 'img/cakeisalie.png' %}" style="width:100%;max-width:300px"><img
                 id="myImg2" src="{% static 'img/cakeisalie.png' %}" style="width:100%;max-width:300px">
-            {% elif food.img == 'default img' and food.url_nutri != "default nutriimg" %}
+            {% elif product.img == 'default img' and product.url_nutri != "default nutriimg" %}
             <img id="myImg" src="{% static 'img/cakeisalie.png' %}" style="width:100%;max-width:300px"><img
-                id="myImg2" src="{{food.url_nutri}}" style="width:100%;max-width:300px">
-            {% elif food.img != 'default img' and food.url_nutri == "default nutriimg" %}
-            <img id="myImg" src="{{food.img}}" style="width:100%;max-width:300px"><img
+                id="myImg2" src="{{product.url_nutri}}" style="width:100%;max-width:300px">
+            {% elif product.img != 'default img' and product.url_nutri == "default nutriimg" %}
+            <img id="myImg" src="{{product.img}}" style="width:100%;max-width:300px"><img
                 id="myImg2" src="{% static 'img/cakeisalie.png' %}" style="width:100%;max-width:300px">
             {% else %}
-            <img id="myImg" src="{{food.img}}" style="width:100%;max-width:300px"><img
-                id="myImg2" src="{{food.url_nutri}}" style="width:100%;max-width:300px">
+            <img id="myImg" src="{{product.img}}" style="width:100%;max-width:300px"><img
+                id="myImg2" src="{{product.url_nutri}}" style="width:100%;max-width:300px">
             {% endif %}
         </div>
 
@@ -54,20 +54,20 @@
             <!-- Modal Caption (Image Text) -->
             <div id="caption"></div>
         </div>
-        {% if food.stores and food.stores != "no stores" %}
+        {% if product.stores and product.stores != "no stores" %}
         <div class="section"><span>4</span>Magasins :</div>
         <div class="inner-wrap">
 
-            <h3 class="">{% for store in food.stores%} {{store}}, {% endfor %}</h3>
+            <h3 class="">{% for store in product.stores%} {{store}}, {% endfor %}</h3>
 
         </div>
         {% endif %}
-        <div class="section"><span>{% if food.stores %}5{% else %}4{% endif %}</span>Fiche
-            du produit sur openfoodfacts :
+        <div class="section"><span>{% if product.stores %}5{% else %}4{% endif %}</span>Fiche
+            du produit sur openproductfacts :
         </div>
         <div class="inner-wrap text-center alimentcardbuttonbox">
             <div class="button-section mt-1"
-                 onclick="window.location.href = '{{ food.url }}';">
+                 onclick="window.location.href = '{{ product.url }}';">
                 <input type="button" value="Voir la fiche"/>
             </div>
             <div class="button-section mt-1"

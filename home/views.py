@@ -29,6 +29,7 @@ def handler500(request, *args, **argv):
 def home(request):
     return render(request, 'home/home.html')
     
+    
 @login_required
 def saved(request):
     sub = Substitute.objects.filter(author=request.user)
