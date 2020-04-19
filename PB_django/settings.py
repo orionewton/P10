@@ -11,14 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import sentry_sdk
 import dj_database_url
-from sentry_sdk.integrations.django import DjangoIntegration
 
-sentry_sdk.init(
-    dsn="https://8a8f070981ac4579b31bda1aed2a43c4@sentry.io/1497740",
-    integrations=[DjangoIntegration()]
-)
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -30,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '^u+ji#i3ty79@ncf=--)o^(*ip+!oltt@!xxy2j_mdob9z-&n@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['loan-purbeurre.herokuapp.com','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['loan-purbeurre.herokuapp.com']
 
 
 # Application definition
@@ -93,9 +87,9 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-#DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-#DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
-#DATABASES['default']['NAME'] = 'DB'
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+DATABASES['default']['NAME'] = 'DB'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
