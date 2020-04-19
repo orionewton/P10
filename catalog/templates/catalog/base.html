@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" href="{% static 'catalog/img/pur-beurre-small.png' %}" />
+
+    <title>Pur Beurre</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'catalog/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static 'catalog/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="{% static 'catalog/vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'catalog/css/creative.css' %}" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <img id="logo" src="{% static 'catalog/img/pur-beurre.png' %}" title="Pur Beurre" alt="Pur Beurre" />
+        <a class="navbar-brand js-scroll-trigger" href="{% url 'catalog:index' %}">Pur Beurre</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+
+            <li>
+              <form id="search-nav"  action="{% url 'catalog:search' %}" method="get" accept-charset="utf-8">
+                  <input type="text" name="query" id ="querynav" placeholder="Chercher un produit" required>
+              </form>
+            </li>
+
+            {% if user.is_authenticated %}
+
+            <li class="nav-item icon">
+              <a href="{% url 'profile' %}"> <i class="fas fa-user fa-2x" data-toggle="tooltip" title="Mon Profile" ></i></a>
+            </li>
+            <li class="nav-item icon">
+              <a href="{% url 'favorite' %}"> <img id="carot" src="{% static 'catalog/img/carot.png' %}" title="Mes produits"/> </a>
+            </li>
+            <li class="nav-item icon">
+              <a href="{% url 'logout' %}"> <i class="fas fa-sign-out-alt fa-2x" data-toggle="tooltip" title="Déconnexion" ></i></a>
+            </li>
+
+            {% else %}
+            <li class="nav-item icon">
+              <a href="{% url 'login' %}"> <i class="fas fa-sign-in-alt fa-2x" data-toggle="tooltip" title="Se Connecter" ></i></a>
+            </li>
+            <li class="nav-item icon">
+              <a href="{% url 'register' %}"> <i class="fas fa-user-plus fa-2x" data-toggle="tooltip" title="S'inscrire" ></i></a>
+            </li>
+            {% endif %}            
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <footer>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto text-center">
+                <a href="{% url 'catalog:legal' %}">Mentions légales</a>
+                <a href="/#contact">Contact</a>
+				</div>
+				<div class="footer-copyright text-center">
+					<p>Tytgat Loan - <a href="https://openclassrooms.com"
+										  target="_blank">Openclassrooms</a> -
+						<a href="https://github.com/orionewton/P8" target="_blank">GitHub</a></p>
+				</div>
+				<div class="container">
+					<div class="small text-center text-copy">Copyright &copy; 2020 - OC-PurBeurre</div>
+				</div>
+            </div>
+          </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'catalog/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'catalog/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static 'catalog/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'catalog/vendor/scrollreveal/scrollreveal.min.js' %}"></script>
+    <script src="{% static 'catalog/vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="{% static 'catalog/js/creative.min.js' %}"></script>
+    <script src="{% static 'catalog/js/custom.js' %}"></script>
+
+    <!-- jQuery !-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
+    <!-- jQuery UI !-->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+  </body>
+
+</html>

@@ -1,31 +1,73 @@
-{% extends "home/base.html" %}
-{% load static %}
-{% load crispy_forms_tags %}
+{% extends "catalog/base.html" %}
 {% block content %}
-<div class="emptybar"></div>
-<div class="basicbox">
-<div class="form-style-10 mt-5">
-<h1>Rejoignez nous</h1>
-<form method="POST">
-    {% csrf_token %}
-    <div class="section"><span>1</span>Pseudo & Email</div>
-    <div class="inner-wrap">
-
-        <label class="labelform10">{{ form.username|as_crispy_field }}</label>
-        <label class="labelform10">{{ form.email|as_crispy_field }} </label>
-    </div>
-    <div class="section"><span>2</span>Mot de passe</div>
-        <div class="inner-wrap">
-        <label class="labelform10">{{ form.password1|as_crispy_field }}</label>
-        <label class="labelform10">{{ form.password2|as_crispy_field }}</label>
-    </div>
-    <div class="button-section">
-     <input type="submit" name="Sign Up" />
-    </div>
-    <div class="mt-2">
-            <small class="labelform10"> Vous possédez déjà un compte ?
-                <a class="ml-2 loginpopup" href="{% url 'login' %}">Connectez vous ici !</a></small>
+<header class="smallheader text-center text-white d-flex">
+    <div class="container my-auto">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <h1 class="text-uppercase">
+                    <strong>Inscription</strong>
+                </h1>                
+            </div>
         </div>
-</form>
-</div></div>
+    </div>
+</header>
+<section class="text-center d-flex">
+    <div class="container my-auto">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <h3 class="border-bottom mb-4">Créez votre compte Pur Beurre!</h3>
+            </fieldset>
+            
+            <div class="fieldWrapper my-label">
+                <label for="{{ form.username.id_for_label }}">Nom d'utilisateur</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    {% for error in form.username.errors %}
+                        <p class="errorform">{{ error }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="fieldWrapper my-label">
+                <label for="{{ form.email.id_for_label }}">Adresse email</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    {% for error in form.email.errors %}
+                        <p class="errorform">{{ error }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="fieldWrapper my-label">
+                <label for="{{ form.password.id_for_label }}">Mot de passe</label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    {% for error in form.password1.errors %}
+                        <p class="errorform">{{ error }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="fieldWrapper my-label">
+                <label for="{{ form.password.id_for_label }}">Confirmation mdp</label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    {% for error in form.password2.errors %}
+                        <p class="errorform">{{ error }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            
+            <br>
+            
+            <div class="form-group">
+                <button class="btn btn-primary btn-xl mt-50" type="submit">S'inscrire</button>
+            </div>
+        </form>
+        <div>
+                Vous avez déjà un compte? <a href="{% url 'login' %}">Connexion</a>
+        </div>
+    </div>
+</section>
 {% endblock content %}

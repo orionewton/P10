@@ -1,14 +1,13 @@
-{% extends "home/base.html" %}
-{% load static %}
+{% extends "catalog/base.html" %}
 {% block content %}
-
-<div class="emptybar"></div>
-<div class="basicbox">
-<div class="form-style-10 mt-5">
-<h2>Vous êtes déconnecté</h2>
-    <div class="mt-2">
-            <small class="labelform10">
-                <a class="ml-2 loginpopup" href="{% url 'login' %}">Connectez vous ici !</a></small>
-        </div>
-</div></div>
+<header class="masthead text-center text-white d-flex">
+	<div class="container my-auto">
+	    <h2>Vous êtes déconnecté</h2>
+	    <div>
+	        <small>
+	            vous avez un compte ?<a href="{% url 'login' %}">connectez-vous</a>
+	        </small>
+	    </div>
+	</div>
+</header>
 {% endblock content %}
