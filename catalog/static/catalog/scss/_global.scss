@@ -5,15 +5,13 @@ html {
   height: 100%;
 }
 
-// Typography
-.text-white-75 {
-  color: fade-out($white, .25);
+body {
+  @include serif-font;
 }
 
-// Custom horizontal rules
-hr.divider {
-  max-width: 3.25rem;
-  border-width: 0.2rem;
+hr {
+  max-width: 50px;
+  border-width: 3px;
   border-color: $primary;
 }
 
@@ -21,21 +19,61 @@ hr.light {
   border-color: $white;
 }
 
-// Button restyling
-.btn {
-  font-family: $font-family-sans-serif;
+a {
+  color: $primary;
+  @include transition-all;
+  &:hover {
+    color: darken($primary, .1);
+  }
 }
 
-.btn-xl {
-  padding: 1.25rem 2.25rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 10rem;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include sans-serif-font;
 }
 
-// Page section padding
-.page-section {
+.bg-primary {
+  background-color: $primary !important;
+}
+
+.bg-dark {
+  background-color: $gray-900 !important;
+}
+
+.text-faded {
+  color: fade-out($white, .3);
+}
+
+section {
   padding: 8rem 0;
+}
+
+.section-heading {
+  margin-top: 0;
+}
+
+::-moz-selection {
+  color: $white;
+  background: $gray-900;
+  text-shadow: none;
+}
+
+::selection {
+  color: $white;
+  background: $gray-900;
+  text-shadow: none;
+}
+
+img::selection {
+  color: $white;
+  background: transparent;
+}
+
+img::-moz-selection {
+  color: $white;
+  background: transparent;
 }
