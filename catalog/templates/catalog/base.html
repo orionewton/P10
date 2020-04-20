@@ -8,23 +8,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" href="/static/catalog/img/pur-beurre-small.png" />
+    <link rel="icon" type="image/png" href="{% static 'img/pur-beurre-small.png' %}" />
 
     <title>Pur Beurre</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/static/catalog/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="static/catalog/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
     <!-- Plugin CSS -->
-    <link href="static/catalog/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+    <link href="{% static 'vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="static/catalog/css/creative.css" rel="stylesheet">
+    <link href="{% static 'css/creative.css' %}" rel="stylesheet">
 
   </head>
 
@@ -33,7 +33,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <img id="logo" src="static/catalog/img/pur-beurre.png" title="Pur Beurre" alt="Pur Beurre" />
+        <img id="logo" src="{% static 'img/pur-beurre.png' %}" title="Pur Beurre" alt="Pur Beurre" />
         <a class="navbar-brand js-scroll-trigger" href="{% url 'catalog:index">Pur Beurre</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -53,7 +53,7 @@
               <a href="{% url 'profile' %}"> <i class="fas fa-user fa-2x" data-toggle="tooltip" title="Mon Profile" ></i></a>
             </li>
             <li class="nav-item icon">
-              <a href="{% url 'favorite' %}"> <img id="carot" src="static/catalog/img/carot.png" title="Mes produits"/> </a>
+              <a href="{% url 'favorite' %}"> <img id="carot" src="{% static 'img/carot.png' %}" title="Mes produits"/> </a>
             </li>
             <li class="nav-item icon">
               <a href="{% url 'logout' %}"> <i class="fas fa-sign-out-alt fa-2x" data-toggle="tooltip" title="Déconnexion" ></i></a>
@@ -94,17 +94,17 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="static/catalog/vendor/jquery/jquery.min.js"></script>
-    <script src="static/catalog/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="static/catalog/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="static/catalog/vendor/scrollreveal/scrollreveal.min.js"></script>
-    <script src="static/catalog/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'vendor/scrollreveal/scrollreveal.min.js' %}"></script>
+    <script src="{% static 'vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="static/catalog/js/creative.min.js"></script>
-    <script src="static/catalog/js/custom.js"></script>
+    <script src="{% static 'js/creative.min.js"></script>
+    <script src="{% static 'js/custom.js"></script>
 
     <!-- jQuery !-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
