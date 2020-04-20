@@ -132,8 +132,6 @@ STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
 LOGIN_REDIRECT_URL = 'catalog:index'
 LOGIN_URL = 'login'
 
