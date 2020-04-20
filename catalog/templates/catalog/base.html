@@ -21,10 +21,10 @@
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
     <!-- Plugin CSS -->
-    <link href="{% static 'vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
+    <link href="{% static 'catalog/vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{% static 'css/creative.css' %}" rel="stylesheet">
+    <link href="{% static 'catalog/css/creative.css' %}" rel="stylesheet">
 
   </head>
 
@@ -53,7 +53,7 @@
               <a href="{% url 'profile' %}"> <i class="fas fa-user fa-2x" data-toggle="tooltip" title="Mon Profile" ></i></a>
             </li>
             <li class="nav-item icon">
-              <a href="{% url 'favorite' %}"> <img id="carot" src="{% static 'img/carot.png' %}" title="Mes produits"/> </a>
+              <a href="{% url 'favorite' %}"> <img id="carot" src="{% static 'catalog/img/carot.png' %}" title="Mes produits"/> </a>
             </li>
             <li class="nav-item icon">
               <a href="{% url 'logout' %}"> <i class="fas fa-sign-out-alt fa-2x" data-toggle="tooltip" title="Déconnexion" ></i></a>
