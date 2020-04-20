@@ -22,18 +22,18 @@ def legal(request):
 
 def autocomplete(request):
 
-	if request.is_ajax():
-		query = request.GET.get('term', '')
-		products = Product.objects.filter(name__icontains=query).order_by("-nutrition_grade")[:10]
-		results = []
-		for p in products:
-			product_dict = {}
-			product_dict = p.name
-			results.append(product_dict)
-		data = json.dumps(results)
-	else:
-		data = 'fail'
-	return HttpResponse(data, 'application/json')
+    if request.is_ajax():
+        query = request.GET.get('term', '')
+        products = Product.objects.filter(name__icontains=query).order_by("-nutrition_grade")[:10]
+        results = []
+        for p in products:
+            product_dict = {}
+            product_dict = p.name
+            results.append(product_dict)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    return HttpResponse(data, 'application/json')
 
 
 
@@ -50,8 +50,8 @@ def search(request):
         alt_products = paginator.get_page(page)
 
         context = {
-        	'alt_products': alt_products,
-        	'paginate': True,
+            'alt_products': alt_products,
+            'paginate': True,
             'title': query,
             'image': product.picture,
         }

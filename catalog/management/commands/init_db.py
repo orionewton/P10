@@ -18,16 +18,16 @@ class Command(BaseCommand):
 				
 			params = {
 					'action': 'process',
-	            	'json': 1,
-				    'page_size': 500,
-				    'page': 1,
-				    'tagtype_0': 'categories',
-			        'tag_contains_0': 'contains',
-			        'tag_0': category,
+					'json': 1,
+					'page_size': 500,
+					'page': 1,
+					'tagtype_0': 'categories',
+					'tag_contains_0': 'contains',
+					'tag_0': category,
 				}
 
 			response = requests.get('https://fr.openfoodfacts.org/cgi/search.pl',
-				            params=params)
+							params=params)
 
 			data = response.json()
 			products = data['products']
