@@ -132,7 +132,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
-LOGIN_REDIRECT_URL = 'catalog:index'
+LOGIN_REDIRECT_URL = 'catalog/index'
 LOGIN_URL = 'login'
 
 AWS_ACCESS_KEY_ID=os.environ.get('AWS_ACCESS_KEY_ID')
