@@ -136,6 +136,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'catalog/static'),
 )
 
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 LOGIN_REDIRECT_URL = 'catalog/index'
 LOGIN_URL = 'login'
 
