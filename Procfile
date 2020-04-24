@@ -1,1 +1,1 @@
-web: gunicorn PB_django.wsgi
+web: gunicorn PB_django.wsgi:application --preload --workers 1
