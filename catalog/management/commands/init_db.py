@@ -8,8 +8,7 @@ from catalog.models import Category, Product
 class Command(BaseCommand):
 	help = 'Initializes the database'
 
-	CATEGORIES = ['Viandes', 'Poissons', 'Epicerie', 'Chocolats', 'Pates-a-tartiner', 'Biscuits',  'Vins', 'Boissons-gazeuses', 'Yaourts', 'Pains', 'Glace', 'Fromages-de-france', 'Pizzas', 'Snacks sucrés']
-
+	CATEGORIES = ['Apéritif', 'Snacks salés', 'Viandes', 'Produits à tartiner', 'Boissons aux fruits', 'Poissons', 'Chocolats', 'Pains', 'Jambons', 'Confiseries chocolatées', 'Soupes']
 
 	def create_db(self):
 
@@ -19,7 +18,7 @@ class Command(BaseCommand):
 			params = {
 					'action': 'process',
 					'json': 1,
-					'page_size': 500,
+					'page_size': 200,
 					'page': 1,
 					'tagtype_0': 'categories',
 					'tag_contains_0': 'contains',
