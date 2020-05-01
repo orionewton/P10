@@ -18,11 +18,9 @@ def register(request):
             return redirect('catalog:index')
     else:
         form = UserRegisterForm()
-        
     return render(request, 'users/register.html', {'form': form})
 
 
- 
 @login_required
 def profile(request):
     return render(request, 'users/profile.html')

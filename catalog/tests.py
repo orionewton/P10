@@ -7,6 +7,7 @@ from .models import Product, Category, UserFavorite
 
 # Create your tests here.
 
+
 class IndexPageTestCase(TestCase):
 
     def test_index_returns_200(self):
@@ -14,39 +15,30 @@ class IndexPageTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
 
 
-
 class DataTests(TestCase):
 
-	def setUp(self):
-		pizzas = Category.objects.create(name='pizzas')
+    def setUp(self):
+        pizzas = Category.objects.create(name='pizzas')
 
-		Product.objects.create(name='Pizza',
-        					category=pizzas,
+        Product.objects.create(
+                            name='Pizza',
+                            category=pizzas,
                             brand='casino',
-                            nutrition_grade='a',                            
+                            nutrition_grade='a',
                             picture='www.pizzajpeg.com',
-        					nutrition_image='www.pizzanutrigrade.com',
+                            nutrition_image='www.pizzanutrigrade.com',
                             url='www.pizza.com')
 
+    def test_search_returns_200(self):
+        Pizza = str('Pizza')
+        response = self.client.get(reverse('catalog:search'), {
+            'query': Pizza,
+        })
+        self.assertEqual(response.status_code, 200)
 
-	def test_search_returns_200(self):
-		Pizza = str('Pizza')
-		response = self.client.get(reverse('catalog:search'), {
-			'query': Pizza,
-		})
-		self.assertEqual(response.status_code, 200)
-
-	def test_search_page_redirect_302(self):
-		Pizza = str('invalid name')
-		response = self.client.get(reverse('catalog:search'), {
-			'query': Pizza,
-		})
-		self.assertEqual(response.status_code, 302)
-
-
-# class CommandTestCase(TestCase):
-
-
-#         out = StringIO()
-#         call_command('init_db', stdout=out)
-#         self.assertIn('', out.getvalue())
+    def test_search_page_redirect_302(self):
+        Pizza = str('invalid name')
+        response = self.client.get(reverse('catalog:search'), {
+            'query': Pizza,
+        })
+        self.assertEqual(response.status_code, 302)

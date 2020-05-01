@@ -15,16 +15,17 @@ from .models import Product, Category, UserFavorite
 def index(request):
     return render(request, 'catalog/index.html')
 
+
 def legal(request):
     return render(request, 'catalog/mlegal.html')
-
 
 
 def autocomplete(request):
 
     if request.is_ajax():
         query = request.GET.get('term', '')
-        products = Product.objects.filter(name__icontains=query).order_by("-nutrition_grade")[:10]
+        products = Product.objects.filter(
+            name__icontains=query).order_by("-nutrition_grade")[:10]
         results = []
         for p in products:
             product_dict = {}
@@ -36,14 +37,16 @@ def autocomplete(request):
     return HttpResponse(data, 'application/json')
 
 
-
 def search(request):
 
     query = request.GET.get('query')
 
     try:
         product = Product.objects.filter(name=query).first()
-        substitutes = Product.objects.filter(category=product.category, nutrition_grade__lt=product.nutrition_grade).order_by("nutrition_grade")
+        substitutes = Product.objects.filter(
+            category=product.category,
+            nutrition_grade__lt=product.nutrition_grade).order_by(
+            "nutrition_grade")
 
         paginator = Paginator(substitutes, 6)
         page = request.GET.get('page')
@@ -57,15 +60,15 @@ def search(request):
         }
 
     except AttributeError:
-        messages.warning(request, "Ce produit n'existe pas. Vérifiez l'orthographe de la recherche")
+        messages.warning(request, "Ce produit n'existe pas. "
+                         "Vérifiez l'orthographe de la recherche")
         return redirect('catalog:index')
 
     return render(request, 'catalog/search.html', context)
 
 
-
 def product_detail(request, product_id):
-    
+
     product = Product.objects.get(id=product_id)
 
     context = {
@@ -78,18 +81,15 @@ def product_detail(request, product_id):
     return render(request, 'catalog/product_detail.html', context)
 
 
-
 @login_required
 def add_favorite(request, product_id):
     try:
-        UserFavorite.objects.get(user_name_id=request.user.id, product_id=(product_id))
+        UserFavorite.objects.get(
+            user_name_id=request.user.id, product_id=(product_id))
         messages.warning(request, 'Ce produit est déjà dans vos favoris.')
         return redirect(request.META.get('HTTP_REFERER'))
     except ObjectDoesNotExist:
-        UserFavorite.objects.create(user_name_id=request.user.id, product_id=(product_id))
+        UserFavorite.objects.create(
+            user_name_id=request.user.id, product_id=(product_id))
         messages.success(request, 'Le produit a bien été enregistré.')
         return redirect(request.META.get('HTTP_REFERER'))
-
-
-
-
