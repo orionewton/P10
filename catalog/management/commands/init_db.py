@@ -54,7 +54,7 @@ class Command(BaseCommand):
                         name=name,
                         category=new_category,
                         brand=brand,
-                        nutrition_grade=nutrition_grade
+                        nutrition_grade=nutrition_grade,
                         url=url,
                         picture=picture,
                         nutrition_image=nutrition_image)
