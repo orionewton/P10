@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '^u+ji#i3ty79@ncf=--)o^(*ip+!oltt@!xxy2j_mdob9z-&n@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['loan-purbeurre.herokuapp.com', '127.0.0.1']
 
 
@@ -138,7 +138,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'catalog/static'),
 )
 
-LOGIN_REDIRECT_URL = 'catalog/index'
+LOGIN_REDIRECT_URL = '/index'
 LOGIN_URL = 'login'
 
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
