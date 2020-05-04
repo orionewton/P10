@@ -14,7 +14,7 @@ class UserViewTests(TestCase):
         response = self.client.post(reverse('login'),
                                     {'username': 'testuser',
                                     'password': 'password'}, follow=True)
-    self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_register(self):
         response = self.client.post(reverse('register'),
