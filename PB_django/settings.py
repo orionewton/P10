@@ -138,7 +138,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'catalog/static'),
 )
 
-LOGIN_REDIRECT_URL = '/index/'
+LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
