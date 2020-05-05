@@ -7,7 +7,7 @@ class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
 
     def clean(self):
-        cleaned_data = super(UserForm, self).clean()
+        cleaned_data = super(UserRegisterForm, self).clean()
         password = cleaned_data.get("password")
         confirm_password = cleaned_data.get("confirm_password")
 
