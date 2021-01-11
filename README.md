@@ -1,4 +1,4 @@
-# P8
+# P10
 
 # Fork the app:
 1. **Python 3.x** and **pip** package manager
@@ -18,7 +18,4 @@
 4. Acces to all yours favorites products
 
 # Local run:
-1. use `python manage.py runserver` on your terminal.
-
-# Note
-Pur_Beurre app has been deployed (and hosted) on Heroku at https://loan-purbeurre.herokuapp.com/
+1. use `python manage.py runserver` on your terminal
